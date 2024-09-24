@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import ImageModel from '../../models/ImageModel';
+import ImageModel from '../../../models/ImageModel';
 import styles from './AboutHeadline.module.scss';
-import headings from '../../styles/typography/Heading.module.scss';
-import Image from 'next/image';
+import headings from '../../../styles/typography/Heading.module.scss';
+import Image from 'next/legacy/image';
 
 interface AboutHeadlineProps {
   title: string;

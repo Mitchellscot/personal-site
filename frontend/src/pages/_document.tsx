@@ -34,7 +34,7 @@ class MyDocument extends Document {
           ></link>
           <link rel="manifest" href="/favicon/site.webmanifest"></link>
         </Head>
-        <body>
+        <body style={{fontFamily: 'ubuntu, system-ui, sans-serif'}}>
           <Main />
           <NextScript />
         </body>

@@ -9,13 +9,38 @@ import BlogEntryData from '../models/BlogEntryData';
 import ContactPageData from '../models/ContactPageData';
 import HomePageData from '../models/HomePageData';
 import ProjectsPageData from '../models/ProjectsPageData';
+import StatsPagePlaceHolderData from '../models/StatsPagePlaceHolderData';
 import StatsPageData from '../models/StatsPageData';
 import {TagsPageData} from '../models/TagsPageData';
 import sanityClient from './sanityClient';
+import {GetExerTrackData} from './ExerTrackClient';
 
 const revalidateIntervalInSeconds = Number(
   process.env.NEXT_REVALIDATE_INTERVAL ?? 60
 );
+
+export const getStatsPage: GetStaticProps<StatsPageData> = async () => {
+  const data: StatsPageData = await sanityClient.fetch(queries.StatsPage);
+  const exerTrackData = await GetExerTrackData();
+  data.pageData = exerTrackData.data ?? null;
+  //console.log(data.pageData);
+  return {
+    props: data,
+    revalidate: revalidateIntervalInSeconds,
+  };
+};
+
+export const getStatsPlaceHolderPage: GetStaticProps<
+  StatsPagePlaceHolderData
+> = async () => {
+  const data: StatsPagePlaceHolderData = await sanityClient.fetch(
+    queries.StatsPage
+  );
+  return {
+    props: data,
+    revalidate: revalidateIntervalInSeconds,
+  };
+};
 
 export const getAboutPage: GetStaticProps<AboutPageData> = async () => {
   const data: AboutPageData = await sanityClient.fetch(queries.AboutPage);
@@ -64,14 +89,6 @@ export const getTaggedBlogPreviews = async (
     getBlogPreviewsByTag(queryValue)
   );
   return data;
-};
-
-export const getStatsPage: GetStaticProps<StatsPageData> = async () => {
-  const data: StatsPageData = await sanityClient.fetch(queries.StatsPage);
-  return {
-    props: data,
-    revalidate: revalidateIntervalInSeconds,
-  };
 };
 
 export const getProjectsPage: GetStaticProps<ProjectsPageData> = async () => {

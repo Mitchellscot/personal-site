@@ -1,4 +1,4 @@
-@import '../helpers.scss';
+@import '../../styles/helpers.scss';
 
 .container {
   max-width: 360px;
@@ -21,4 +21,8 @@
   text-align: center;
   text-transform: uppercase;
   color: $WHITE;
+}
+.timeButtonContainer {
+  display: flex;
+  justify-content: space-evenly;
 }
