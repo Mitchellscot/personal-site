@@ -13,7 +13,7 @@ export default function Footer() {
         &copy;{` ${year} Mitchell Scott. All rights reserved`}
       </p>
       <div className={styles.socialLinks}>
-        <Link
+        {/* <Link
           href="https://www.strava.com/athletes/mitchellscot"
           legacyBehavior
         >
@@ -30,7 +30,7 @@ export default function Footer() {
           <a target="_blank">
             <Image src="/github.svg" height="40" width="40" alt="" />
           </a>
-        </Link>
+        </Link> */}
       </div>
     </footer>
   );
