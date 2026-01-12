@@ -1,0 +1,30 @@
+@use '../../styles/mixins.scss';
+@use '../../styles/variables.scss';
+
+.title {
+  margin: 20px auto 20px auto;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.maintenanceContainer {
+  max-width: 360px;
+  margin: 20px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  @include mixins.breakpoint(SM) {
+    max-width: variables.$BP_SM;
+  }
+
+  @include mixins.breakpoint(MD) {
+    max-width: variables.$BP_MD;
+  }
+
+  @include mixins.breakpoint(LG) {
+    max-width: variables.$MAX_WIDTH_NARROW;
+    padding-inline: 0;
+  }
+}
