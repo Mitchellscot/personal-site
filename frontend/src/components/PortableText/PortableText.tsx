@@ -56,22 +56,25 @@ const PortableText: Partial<PortableTextReactComponents> = {
       const {slug} = value;
       const href = `/blog/${slug}`;
       return (
-        <Link href={href} legacyBehavior>
-          <a className={styles.link}>{children}</a>
+        <Link href={href} className={styles.link}>
+          {children}
         </Link>
       );
     },
     externalLink: ({value, children}) => {
       const {blank, href} = value;
       return blank ? (
-        <Link href={href} legacyBehavior>
-          <a className={styles.link} target="_blank" rel="noreferrer">
-            {children}
-          </a>
+        <Link
+          href={href}
+          className={styles.link}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {children}
         </Link>
       ) : (
-        <Link href={href} legacyBehavior>
-          <a className={styles.link}>{children}</a>
+        <Link href={href} className={styles.link}>
+          {children}
         </Link>
       );
     },

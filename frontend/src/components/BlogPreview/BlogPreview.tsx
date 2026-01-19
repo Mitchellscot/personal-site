@@ -23,13 +23,13 @@ export default function BlogPreview({
     <div className={styles.container}>
       <div className={styles.titleContainer}>
         <p className={titleText}>
-          <Link href={`blog/${slug}`} legacyBehavior>
+          <Link href={`blog/${slug}`}>
+            {/* @next-codemod-error This Link previously used the now removed `legacyBehavior` prop, and has a child that might not be an anchor. The codemod bailed out of lifting the child props to the Link. Check that the child component does not render an anchor, and potentially move the props manually to Link. */}
             {title}
           </Link>
         </p>
         <Button variant={'transparent'} label="Read It" link={`blog/${slug}`} />
       </div>
-
       <p className={previewText}>{preview}</p>
       <div className={styles.bottomContainer}>
         <p className={dateText}>
@@ -42,9 +42,9 @@ export default function BlogPreview({
                 <Link
                   href={{pathname: '/blog', query: {tag: tag}}}
                   key={index}
-                  legacyBehavior
+                  className={tagText}
                 >
-                  <a className={tagText}>{tag}</a>
+                  {tag}
                 </Link>
               );
             })}

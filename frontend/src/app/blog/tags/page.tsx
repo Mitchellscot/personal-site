@@ -35,12 +35,10 @@ export default async function Tags() {
               <li key={index}>
                 <Link
                   href={{pathname: '/blog', query: {tag: tag.tag}}}
-                  legacyBehavior
+                  className={tagText}
                 >
-                  <a className={tagText}>
-                    {tag.tag}{' '}
-                    <span className={styles.tagCount}>({tag.count})</span>
-                  </a>
+                  {tag.tag}{' '}
+                  <span className={styles.tagCount}>({tag.count})</span>
                 </Link>
               </li>
             );

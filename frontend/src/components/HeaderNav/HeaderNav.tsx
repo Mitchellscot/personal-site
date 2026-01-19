@@ -15,36 +15,40 @@ export default async function HeaderNav({path = '/'}) {
     <nav className={styles.container}>
       <ol className={styles.navLinks}>
         <li>
-          <Link href="/" passHref legacyBehavior>
-            <a className={blogLinkIsActive ? navItemActive : navItem}>Blog</a>
+          <Link href="/" className={blogLinkIsActive ? navItemActive : navItem}>
+            Blog
           </Link>
         </li>
         <li>
-          <Link href="/projects" passHref legacyBehavior>
-            <a className={pathName === 'projects' ? navItemActive : navItem}>
-              Projects
-            </a>
+          <Link
+            href="/projects"
+            className={pathName === 'projects' ? navItemActive : navItem}
+          >
+            Projects
           </Link>
         </li>
         <li>
-          <Link href="/stats" passHref legacyBehavior>
-            <a className={pathName === 'stats' ? navItemActive : navItem}>
-              Stats
-            </a>
+          <Link
+            href="/stats"
+            className={pathName === 'stats' ? navItemActive : navItem}
+          >
+            Stats
           </Link>
         </li>
         <li>
-          <Link href="/about" passHref legacyBehavior>
-            <a className={pathName === 'about' ? navItemActive : navItem}>
-              About
-            </a>
+          <Link
+            href="/about"
+            className={pathName === 'about' ? navItemActive : navItem}
+          >
+            About
           </Link>
         </li>
         <li>
-          <Link href="/contact" passHref legacyBehavior>
-            <a className={pathName === 'contact' ? navItemActive : navItem}>
-              Contact
-            </a>
+          <Link
+            href="/contact"
+            className={pathName === 'contact' ? navItemActive : navItem}
+          >
+            Contact
           </Link>
         </li>
       </ol>

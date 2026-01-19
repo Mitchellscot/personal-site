@@ -69,9 +69,9 @@ export default async function BlogEntry({params}: BlogProps) {
                 <Link
                   href={{pathname: '/blog', query: {tag: tag}}}
                   key={index}
-                  legacyBehavior
+                  className={tagText}
                 >
-                  <a className={tagText}>{tag}</a>
+                  {tag}
                 </Link>
               );
             })}

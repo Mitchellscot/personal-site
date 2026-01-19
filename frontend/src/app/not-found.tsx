@@ -19,8 +19,8 @@ export default function NotFound() {
         <h1 className={titleText}>That page does not exist.</h1>
         <p className={text}>
           {`Why don\'t you just `}
-          <Link href={'/'} legacyBehavior>
-            <a className={styles.link}>Go Home.</a>
+          <Link href={'/'} className={styles.link}>
+            Go Home.
           </Link>
         </p>
       </div>
