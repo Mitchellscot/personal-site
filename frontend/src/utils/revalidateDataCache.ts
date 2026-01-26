@@ -7,7 +7,7 @@ import path from 'path';
 import fs from 'fs';
 
 export default async function revalidateDataCache(req: NextRequest) {
-  revalidateTag('extertrack');
+  revalidateTag('extertrack', {expire: 0});
   const newStats = await GetExerTrackData<ExerTrackResponse>();
   const filePath = path.resolve('/tmp', 'exerTrackResponse.json');
   fs.writeFileSync(filePath, JSON.stringify(newStats, null, 2), 'utf-8');

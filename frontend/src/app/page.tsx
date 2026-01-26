@@ -1,10 +1,9 @@
 import {Metadata} from 'next';
-//import BlogList from '../components/BlogList/BlogList';
+import BlogList from '../components/BlogList/BlogList';
 import HomePageData from '../models/HomePageData';
 import {fetchSanityData} from '../utils/sanityClient';
 import queries from '../constants/queries';
 import Layout from '../components/Layout/Layout';
-import Maintenance from './maintenance/page';
 
 export const metadata: Metadata = {
   title: 'Mitchell Scott',
@@ -22,8 +21,7 @@ export default async function Home() {
   if (!data) return null;
   return (
     <Layout path={'/'}>
-      <Maintenance />
-      {/* <BlogList list={data.blogList} totalCount={data.totalCount} /> */}
+      <BlogList list={data.blogList} totalCount={data.totalCount} />
     </Layout>
   );
 }

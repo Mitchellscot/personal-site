@@ -28,14 +28,14 @@ export async function GetExerTrackData<
       console.log(
         'Mitchell, we are getting a null response from the ExerTrack API. Loading the json file instead.'
       );
-      revalidateTag('extertrack');
+      revalidateTag('extertrack', {expire: 0});
       const tmpFilePath = path.resolve('/tmp', 'exerTrackResponse.json');
       if (fs.existsSync(tmpFilePath)) {
         const data = JSON.parse(fs.readFileSync(tmpFilePath, 'utf-8'));
         return data;
       } else {
         const staticData =
-          require('/Resources/exerTrackResponse.json') as ExerTrackResponse;
+          require('./exerTrackResponse.json') as ExerTrackResponse;
         return staticData;
       }
     }
@@ -52,7 +52,7 @@ export async function GetExerTrackData<
       return data;
     } else {
       const staticData =
-        require('/Resources/exerTrackResponse.json') as ExerTrackResponse;
+        require('./exerTrackResponse.json') as ExerTrackResponse;
       return staticData;
     }
   }
