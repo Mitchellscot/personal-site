@@ -4,6 +4,7 @@ import HomePageData from '../models/HomePageData';
 import {fetchSanityData} from '../utils/sanityClient';
 import queries from '../constants/queries';
 import Layout from '../components/Layout/Layout';
+import Maintenance from './maintenance/page';
 
 export const metadata: Metadata = {
   title: 'Mitchell Scott',
@@ -16,6 +17,15 @@ async function getHomePageData(): Promise<HomePageData | null> {
 }
 
 export default async function Home() {
+  const maintenanceMode = process.env.MAINTENANCE;
+  console.log('MITCHELL MAINTENANCE MODE: ', maintenanceMode);
+  if (maintenanceMode) {
+    return (
+      <Layout path={'/'}>
+        <Maintenance />
+      </Layout>
+    );
+  }
   const data = await getHomePageData();
 
   if (!data) return null;

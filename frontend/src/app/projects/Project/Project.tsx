@@ -5,6 +5,7 @@ import headers from '../../../styles/typography/Heading.module.scss';
 import text from '../../../styles/typography/Text.module.scss';
 import Button from '../../../components/Button/Button';
 import styles from './Project.module.scss';
+import Maintenance from '../../maintenance/page';
 
 interface ProjectProps {
   project: ProjectModel;
@@ -12,6 +13,10 @@ interface ProjectProps {
 }
 
 export default function Project({project, drawLine}: ProjectProps) {
+  const maintenanceMode = process.env.MAINTENANCE;
+  if (maintenanceMode) {
+    return <Maintenance />;
+  }
   const titleText = classNames(styles.title, headers.blogPreview);
   const summaryText = classNames(styles.summary, text.textMd);
   const buttonContainerStyle = classNames(styles.buttonContainer, {

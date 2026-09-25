@@ -5,6 +5,7 @@ import {getBlogPreviewsByTag} from '../../constants/queryHelpers';
 import HomePageData from '../../models/HomePageData';
 import {fetchSanityData} from '../../utils/sanityClient';
 import Layout from '../../components/Layout/Layout';
+import Maintenance from '../maintenance/page';
 
 //Next does not allow running query parameters on the home URL
 //SO I had to make a seperate page /blog so that the url parameters work properly
@@ -53,6 +54,10 @@ type BlogPageProps = {
 };
 
 export default async function Blog({searchParams}: BlogPageProps) {
+  const maintenanceMode = process.env.MAINTENENACE?.toLowerCase() === 'true';
+  if (maintenanceMode) {
+    return <Maintenance />;
+  }
   const {tag} = await searchParams;
   let data;
   if (tag) data = await getTaggedBlogPreviews(tag);

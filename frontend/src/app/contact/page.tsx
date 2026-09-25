@@ -20,6 +20,10 @@ async function getContactPage(): Promise<ContactPageData | null> {
 }
 
 export default async function Contact() {
+  const maintenanceMode = process.env.MAINTENANCE;
+  if (maintenanceMode) {
+    return <Maintenance />;
+  }
   const contactPageData = await getContactPage();
   if (!contactPageData) return null; //TODO: 404 page
   const titleText = classNames(styles.title, headings.heading2);

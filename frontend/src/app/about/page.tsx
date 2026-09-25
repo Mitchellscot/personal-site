@@ -19,6 +19,10 @@ export const metadata: Metadata = {
 };
 
 export default async function About() {
+  const maintenanceMode = process.env.MAINTENANCE;
+  if (maintenanceMode) {
+    return <Maintenance />;
+  }
   const data = await getAboutPage();
   if (!data) return null; //TODO: 404 page
 

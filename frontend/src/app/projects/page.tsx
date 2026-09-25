@@ -20,6 +20,10 @@ async function getProjectsPage(): Promise<ProjectsPageData | null> {
 }
 
 export default async function Projects() {
+  const maintenanceMode = process.env.MAINTENANCE;
+  if (maintenanceMode) {
+    return <Maintenance />;
+  }
   const data = await getProjectsPage();
   if (!data) return null; //TODO: 404 page
   const titleText = classNames(headings.heading2, styles.title);
